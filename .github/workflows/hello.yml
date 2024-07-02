@@ -1,8 +1,11 @@
-name: Hello
+name: Compare function
 on: push
 jobs:
-  hello:
+  compare:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello world"
-      - uses: actions/checkout@v4
+      - run: printenv | grep '_FUNC'
+        env:
+          CONTAINS_FUNC: ${{ contains('Hello', 'ell') }}
+          STARTS_WITH_FUNC: ${{ startWith('Hello', 'He') }}
+          ENDS_WITH_FUNC: ${{ endWith('Hello', 'lo') }}
