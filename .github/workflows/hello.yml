@@ -1,9 +1,11 @@
-name: JSON functions
+name: GITHUB_OUTPUT
 on: push
 jobs:
-  dump:
+  share:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${CONTEXT}"
-        env:
-          CONTEXT: ${{ toJSON(github) }}
+      - id: source
+        run: echo "result=Hello" >> "${GITHUB_OUTPUT}"
+      - env:
+          RESULT: ${{ steps.source.outputs.result }}
+        run: echo "${RESULT}"
