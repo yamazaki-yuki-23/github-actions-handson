@@ -1,12 +1,8 @@
-name: Change shell
+name: Concurrency
 on: push
+concurrency: ${{ github.workflow }}
 jobs:
-  prints:
+  sleep:
     runs-on: ubuntu-latest
     steps:
-      - shell: bash
-        run: echo "${SHELL}"
-      - shell: python
-        run: |
-          import os
-          print(os.environ['PATH'])
+      - run: sleep 120
