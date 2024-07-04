@@ -1,9 +1,15 @@
-name: Annotation
+name: Parallel jobs
 on: push
 jobs:
-  log:
+  first:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "::error::This is an error"
-      - run: echo "::warning::This is a warning"
-      - run: echo "::notice::This is a notice"
+      - run: sleep 10 && echo "first job"
+  second:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 10 && echo "second job"
+  third:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 10 && echo "third job"
